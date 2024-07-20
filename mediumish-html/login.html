@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -34,7 +36,9 @@ input,
   line-height: 20px;
   text-decoration: none; /* remove underline from anchors */
 }
-
+h2, p{
+  color: antiquewhite;
+}
 input:hover,
 .btn:hover {
   opacity: 1;
@@ -131,57 +135,63 @@ input[type=submit]:hover {
     text-align: center;
   }
 }
+body {
+  background-image: url('assets/img/demopic/images\ \(1\).jpg');
+}
 </style>
-</head>
-<body>
 
-<h2>Organizador Web</h2>
-<p>Organice y administre todos sus recursos en un mismo lugar.</p>
+  </head>
+  <body>
+    <h2>Organizador Web</h2>
+    <p>Organice y administre todos sus recursos en un mismo lugar.</p>
 
-<div class="container">
-  <form action="principal.html">
-    <div class="row">
-      <h2 style="text-align:center">Acceder con redes sociales o manualmente</h2>
-      <div class="vl">
-        <span class="vl-innertext">or</span>
-      </div>
+    <div class="container">
+      <form action="principal.html">
+        <div class="row">
+          <h2 style="text-align:center">Acceder con redes sociales o
+            manualmente</h2>
+          <div class="vl">
+            <span class="vl-innertext">or</span>
+          </div>
 
-      <div class="col">
-        <a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Acceder con Facebook
-         </a>
-        <a href="#" class="twitter btn">
-          <i class="fa fa-twitter fa-fw"></i> Acceder con Twitter
-        </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-          </i> Acceder con Google+
-        </a>
-      </div>
+          <div class="col">
+            <a href="#" class="fb btn">
+              <i class="fa fa-facebook fa-fw"></i> Acceder con Facebook
+            </a>
+            <a href="#" class="twitter btn">
+              <i class="fa fa-twitter fa-fw"></i> Acceder con Twitter
+            </a>
+            <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+              </i> Acceder con Google+
+            </a>
+          </div>
 
-      <div class="col">
-        <div class="hide-md-lg">
-          <p></p>
+          <div class="col">
+            <div class="hide-md-lg">
+              <p></p>
+            </div>
+
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña"
+              required>
+            <input type="submit" value="Login">
+          </div>
+
         </div>
+      </form>
+    </div>
 
-        <input type="text" name="username" placeholder="Usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <input type="submit" value="Login">
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="#" style="color:white" class="btn">Registrarse</a>
+        </div>
+        <div class="col">
+          <a href="#" style="color:white" class="btn">Olvidaste la
+            contraseña?</a>
+        </div>
       </div>
-      
     </div>
-  </form>
-</div>
 
-<div class="bottom-container">
-  <div class="row">
-    <div class="col">
-      <a href="#" style="color:white" class="btn">Registrarse</a>
-    </div>
-    <div class="col">
-      <a href="#" style="color:white" class="btn">Olvidaste la contraseña?</a>
-    </div>
-  </div>
-</div>
-
-</body>
+  </body>
 </html>
