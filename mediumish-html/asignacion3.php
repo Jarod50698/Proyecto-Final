@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
 		<!-- Custom styles for this template -->
 		<link href="assets/css/mediumish.css" rel="stylesheet">
 	</head>
+
 	<body>
 
 		<!-- Begin Nav
@@ -41,30 +43,27 @@
 				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 					<!-- Begin Menu -->
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a class="nav-link" href="productos.html">Productos</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="asignarVehiculos.html">Asignar Vehiculos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="agregarVehiculo.html">Agregar Vehiculo </a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="interaccionesClientes.html">Interacciones con
+							<a class="nav-link" href="interaccionesClientes.php">Interacciones con
 								Clientes </a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="informesVentas.html">Informes de Venta</a>
+							<a class="nav-link" href="informesVentas.php">Informes de Venta</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="tareas.html">Tareas</a>
+							<a class="nav-link" href="tareas.php">Tareas</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="notificaciones.html">Notificaciones</a>
+							<a class="nav-link" href="notificaciones.php">Notificaciones</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="login.html">Inicio de sesion</a>
+							<a class="nav-link" href="login.php">Inicio de sesion</a>
 						</li>
 					</ul>
 					<!-- End Menu -->
@@ -72,8 +71,10 @@
 					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="text" placeholder="Search">
 						<span class="search-icon"><svg class="svgIcon-use" width="25" height="25"
-								viewbox="0 0 25 25"><path
-									d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"></path></svg></span>
+								viewbox="0 0 25 25">
+								<path
+									d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"></path>
+							</svg></span>
 					</form>
 					<!-- End Search -->
 				</div>
@@ -99,8 +100,8 @@
 					</div>
 				</div>
 			</div>
-			<a href="asignacion.html">
-				<img class="img-fluid img-thumb" src="assets/img/demopic/descarga.jpg"
+			<a>
+				<img class="img-fluid img-thumb" src="assets/img/demopic/images (1).png"
 					alt>
 			</a>
 			<div class="graybg authorpage">
@@ -108,63 +109,93 @@
 					<div class="listrecent listrelated">
 						<!-- begin post -->
 						<div class="authorpostbox">
-							<h1>Digite el nombre del empleado</h1>
-							<br>
-							<input name="nombreEmpleado" type="text"
-								placeholder="Nombre">
-							<br><br>
-							<h1>Digite el modelo del vehiculo</h1>
-							<br>
-							<input name="modeloVeihiculo" type="text"
-								placeholder="Modelo">
-							<br><br>
-							<input type="submit" value="Asignar">
+							<form action="registAsignaVehi.php" method="post">
+								<label for="name"><b>Nombre del empleado</b></label>
+								<input type="text" placeholder="Nombre Completo" name="name" id="name"
+									required>
+								<br>
+								<br>
+								<label for="placa"><b>Número de placa del vehículo</b></label>
+								<input type="text" placeholder="Placa Vehiculo" name="placa" id="placa"
+									required><br>
+								<br>
 
+								<button type="submit" class="btn btn-primary" name="register">Asignar Vehículo</button>
+								</form>
 						</div>
-
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- end post -->
+			<div>
+			<h1>Lista de asignaciones:</h1>
+			<br>
+			<div><table border="1" >
+		<tr>
+			<td>id</td>
+			<td>Empleado</td>
+			<td>Placa del vehículo</td>
+		</tr>
 
-		<!-- Begin Twitter Timeline
-================================================== -->
-		<div class="container margtop3rem">
-			<a class="twitter-grid"
-				href="https://twitter.com/TwitterDev/timelines/539487832448843776">WowThemesNet
-				Tweets</a> <script async src="https://platform.twitter.com/widgets.js"
-				charset="utf-8"></script>
-		</div>
-		<!-- End Twitter Timeline
-================================================== -->
+		<?php 
+		$inc = include "conexion.php";
+		if ($inc) {
+		$sql="SELECT * from asignacionvehiculo";
+		$result=mysqli_query($conex,$sql);
 
-		<!-- Begin Footer
+		while($mostrar=mysqli_fetch_array($result)){
+		 ?>
+
+		<tr>
+			<td><?php echo $mostrar['id'] ?></td>
+			<td><?php echo $mostrar['empleado'] ?></td>
+			<td><?php echo $mostrar['placa'] ?></td>
+		</tr>
+	<?php 
+	}}
+	 ?>
+	</table>
+				</div>
+			<!-- end post -->
+
+			<!-- Begin Twitter Timeline
 ================================================== -->
-		<div class="container">
-			<div class="footer">
-				<p class="pull-left">
-					Copyright &copy; 2024 Organizador Web
-				</p>
-				<p class="pull-right">
-					Organizador Web <a target="_blank"
-						href>Administrativo</a>
-				</p>
-				<div class="clearfix"></div>
+			<div class="container margtop3rem">
+				<a class="twitter-grid"
+					href="https://twitter.com/TwitterDev/timelines/539487832448843776">Organizador
+					Administrativo</a>
+				<script async src="https://platform.twitter.com/widgets.js"
+					charset="utf-8"></script>
 			</div>
-		</div>
-		<!-- End Footer
+			<!-- End Twitter Timeline
 ================================================== -->
 
-		<!-- Bootstrap core JavaScript
+			<!-- Begin Footer
 ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-			integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-			crossorigin="anonymous"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-	</body>
-</html>
+			<div class="container">
+				<div class="footer">
+					<p class="pull-left">
+						Copyright &copy; 2024 Organizador Web
+					</p>
+					<p class="pull-right">
+						Organizador Web <a target="_blank"
+							href>Administrativo</a>
+					</p>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!-- End Footer
+================================================== -->
+
+			<!-- Bootstrap core JavaScript
+================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+				integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+				crossorigin="anonymous"></script>
+			<script src="assets/js/bootstrap.min.js"></script>
+			<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+		</body>
+
+	</html>
